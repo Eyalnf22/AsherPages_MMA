@@ -1,0 +1,162 @@
+﻿<html>
+<head>
+    <title>סיימון</title>
+    <style>
+    .color 
+    {
+      cursor:pointer;
+      background-color:white;
+      width:100px;
+      height:100px;
+      transition:0.3s;
+    }
+    color:hover 
+    {
+        background-color:'lightgray;
+     
+    }
+    </style>
+</head>
+<body >
+<div id="turn">שים לב!</div>
+<table border="1" cellspacing="10">
+
+<tr>
+    <td id="color1" onclick="red()" class="color"  onmouseleave="redOff()"></td>
+    <td id="color2" onclick="green()" class="color"  onmouseleave="greenOff()"></td>
+</tr>
+
+<tr>
+    <td id="color3" onclick="yellow()" class="color"   onmouseleave="yellowOff()"></td>
+    <td id="color4" onclick="orange()" class="color"   onmouseleave="orangeOff()"></td>
+</tr>
+
+</table>
+
+
+<script>
+    function ido() {
+    alert("2");
+    }
+    setTimeout(roll, 5000);
+    
+    var rnd;
+    var wheel = [];
+    var colors = [];
+    var count = 0;
+    var i = 0;
+    var let = false;
+
+    function roll() {
+        rnd = Math.floor(Math.random() * 4) + 1;
+       
+        wheel.push(rnd);
+      //  alert("wheel" + wheel);
+        //  alert("colors" + colors); 
+         
+        paint();
+    }
+
+    function paint() {
+        let = false;
+        document.getElementById("turn").innerHTML ="שים לב";
+        
+        switch (wheel[i]) {
+            case 1:
+                document.getElementById("color1").style.backgroundColor = "red";
+                break;
+            case 2:
+                document.getElementById("color2").style.backgroundColor = "green";
+                break;
+            case 3:
+                document.getElementById("color3").style.backgroundColor = "yellow";
+                break;
+            case 4:
+                document.getElementById("color4").style.backgroundColor = "orange";
+                break;
+        }
+        setTimeout(restart, 700);
+        if (i < wheel.length -1) {
+            i++;
+            setTimeout(paint, 1000);
+        }
+        else {
+            checked();
+            i = 0;
+        }
+    }
+
+    function eyal() {
+        let = true;
+        document.getElementById("turn").innerHTML = "שחק!";
+
+    }
+
+    function checked() {
+        setTimeout(eyal, 3000);
+        for (var k = 0; k <= wheel.length; k++) {
+            if (wheel[k] == colors[k]) {
+                count++;
+            }
+        }
+        if (count == wheel.length) {
+            colors = [];
+            count = 0;
+            setTimeout(roll, 10000);
+        }
+        else {
+            alert("lozer");
+        }
+    }
+
+    function restart() {
+            document.getElementById("color1").style.background = "white";
+            document.getElementById("color2").style.background = "white";
+            document.getElementById("color3").style.background = "white";
+            document.getElementById("color4").style.background = "white";
+        }
+
+        function red() {
+        if(let)
+            document.getElementById("color1").style.backgroundColor = "red";
+        colors.push(1);
+        }
+        function green() {
+            if (let)
+            document.getElementById("color2").style.backgroundColor = "green";
+            colors.push(2);
+        }
+        function yellow() {
+            if (let)
+            document.getElementById("color3").style.backgroundColor = "yellow";
+            colors.push(3);
+        }
+        function orange() {
+            if (let)
+
+            document.getElementById("color4").style.backgroundColor = "orange";
+
+            colors.push(4);
+        }
+
+        function redOff() {
+            document.getElementById("color1").style.backgroundColor = "white";
+        }
+
+        function greenOff() {
+            document.getElementById("color2").style.backgroundColor = "white";
+        }
+
+
+        function yellowOff() {
+            document.getElementById("color3").style.backgroundColor = "white";
+        }
+
+        function orangeOff() {
+            document.getElementById("color4").style.backgroundColor = "white";
+        }
+
+</script>
+
+</body>
+</html>

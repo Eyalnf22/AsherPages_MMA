@@ -1,0 +1,358 @@
+﻿<%@ Master Language="C#" %>
+
+
+<script runat="server">
+ 
+    string str = "התחבר";
+    string MyName = "";
+    string strDis= "inline-block";
+    string strAppear = "none";
+    string strAppearPages = "none";
+    string adminPage = "none";
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        string logout = Request.Browser["logout"];
+
+        if (Session["login"] == "yes")
+        {
+            str = "התנתק";
+            strDis = "none";
+            strAppearPages = "inline-block";
+            strAppear = "inline-block";            
+        }
+        if (Session["Admin"] == "yes")
+        {
+            adminPage = "inline-block";
+            str = "התנתק";
+            strDis = "none";
+            strAppearPages = "inline-block";
+        }
+
+        str += Session["YourUserName"];
+    }
+</script>
+  
+  <script type="text/javascript">
+      function logoAnimation() {
+          picNo = 0;
+          setInterval(Slide, 10);
+
+      }
+      function Slide() {
+          picNo++;
+          document.getElementById("fighter").src = "allFrames/" + picNo + ".gif";
+          if (picNo == 36) {
+              picNo = 0;
+          }
+      }
+        
+  </script>
+
+<html>
+
+<head>
+ <link rel="icon" type="image/png" href="images/myIcon.png"/>
+    <link href="eyalStyle.css" rel="stylesheet" type="text/css" />
+<title><asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder></title>
+
+</head>
+
+<body dir="rtl" onload="logoAnimation()">
+
+<div id="wrap">
+
+<div id="header">
+<div class="headerUp">
+<form style="position:absolute;" method="post" action="logout.aspx">
+
+<a href="SignUp.aspx"><input type="submit" value="<%=str%>"  id="logout"  name="logout" style=" position:fixed;  cursor:pointer; border:solid 2px blue;background :linear-gradient(180deg,#0099ff ,#0033cc); color:white;width:140px; float:left;  height:24px; font-size:15px;font-family:Guttman Hatzvi;border-radius:14px;color:white; text-align:right;"/></a>
+
+</form> 
+ <img src="dar4.png" id="fighter" width="100" height="100" />
+<table style="padding-top:10px">
+<tr>
+
+<td><img src="images/katareKick.png" width="100" height="100" style="padding-right:40px; float:right; display:inline-block;"/>
+</td><td><span style="font-size:70px; font-family:Guttman Hatzvi; color:#333333; margin-right:16px;">
+
+<asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+
+<br /><div style="font-family:Arial; font-size:20px; margin-top:-10px; color:#333333;">אומנויות הלחימה- להפסיד בכבוד ולנצח ביושר</div>
+</span></td>
+</tr>
+</table>
+
+
+  
+</div>
+
+</div>
+
+  
+<div id="contentt">  
+<div class="headermenu" style="z-index:3; position: sticky; top: 0;"> 
+<div class="headerm" style=" border-left: 3.4px solid #000d33;" >
+<ul style="padding:0;">
+<div class="appeared">
+<li><a class="headermlia" href="HomePage.aspx" style=" border-right: 3.4px solid #000d33;">דף הבית</a>
+<div class="disappeared">
+<ol style="left:15; line-height:2.2; position:relative;">
+    <a href="homePage.aspx"><li >דף הבית</li></a>
+    <a href="signUp.aspx"><li style=" display:<%=strDis%>;" >הרשמה</li></a>
+    <a href="login.aspx"><li style=" display:<%=strDis%>;">התחברות</li></a>
+    <a href="admin.aspx"><li style=" display:<%=adminPage%>;">מנהלים</li></a> 
+    <a href="quiz.aspx"><li style="display:<%=strAppearPages %>;">שאלון</li></a> 
+    <a href="Update.aspx"><li style=" display:<%=strAppear%>;">עדכון פרטים</li></a> 
+
+    
+
+</ol>
+</div></li>
+ </div>
+
+
+
+ <div class="appeared2">
+<li><a class="headermlia" href="HomePage.aspx" style=" border-right: 3.4px solid #000d33;">קראטה</a>
+<div class="disappeared2">
+<ol style="left:16; line-height:2.2; position:relative;">
+  <a href="karate1.aspx" ><li style="display:<%=strAppearPages %>;">היסטוריה</li></a>
+   <a href="karate2.aspx"> <li style="display:<%=strAppearPages %>;">קאטות</li></a>
+    <a href="karate3.aspx"><li style="display:<%=strAppearPages %>;">משמעות</li></a>
+    <a href="karate4.aspx"> <li >דירוג</li></a>
+   <a href="karate5.aspx"> <li >תחרויות</li></a>
+   <a href="karate6.aspx"> <li>חוקים</li> </a>
+   <a href="karate7.aspx"> <li>דוג'ו</li></a>
+   <a href="karate8.aspx"> <li>מושגים</li></a>
+    <a href="karate9.aspx"><li> שוטוקאן</li></a>
+    <a href="karate10.aspx"> <li> שיטוריו</li></a>
+    <a href="karate11.aspx"> <li>מייסד</li></a>
+
+</ol>
+</div></li>
+ </div>
+
+
+ <div class="appeared3">
+<li><a class="headermlia" href="HomePage.aspx" style="padding:5 26px; border-right: 3.4px solid #000d33;">MMA</a>
+<div class="disappeared3" >
+<ol style="left:28; line-height:2.2; position:relative;">
+    <a href="mma1.aspx"><li>היסטוריה</li></a>
+     <a href="mma2.aspx"><li><b>UFC</b></li>
+     <a href="mma3.aspx"><li>רקע</li></a>
+     <a href="mma4.aspx"> <li>בזממנו</li></a>
+     <a href="mma5.aspx"><li>חוקים</li></a>
+     <a href="mma6.aspx"><li>איסורים</li></a> 
+    <a href="mma7.aspx"> <li>אסטרטגיה</li></a>
+    <a href="mma8.aspx"> <li>גראפלינג</li></a>
+     <a href="mma10.aspx"> <li>ניצחון</li></a>
+     <a href="mma9.aspx"> <li>משקל</li></a>
+
+</ol>
+</div></li>
+ </div>
+
+
+  <div class="appeared4">
+<li><a class="headermlia" href="HomePage.aspx" style=" border-right: 3.4px solid #000d33;">קרב מגע</a>
+<div class="disappeared4" >
+<ol style="left:15; line-height:2.2; position:relative;">
+    <a href="krav1.aspx"><li>רקע</li></a>
+     <a href="krav2.aspx"><li>מייסד</li>
+     <a href="krav3.aspx"><li>עקרונות</li></a>
+     <a href="krav4.aspx"> <li>שיטות</li></a>
+     <a href="krav5.aspx"><li>דרגות</li></a>
+     <a href="krav6.aspx"><li>מטרה</li></a> 
+    <a href="krav7.aspx"> <li>הנחות</li></a>
+    <a href="krav8.aspx"> <li>קרב מגן</li></a>
+     <a href="krav9.aspx"> <li>קרב מבצעי</li></a>
+     <a href="krav10.aspx"> <li>אימון</li></a>
+
+</ol>
+</div></li>
+ </div>
+
+
+
+   <div class="appeared5">
+<li><a class="headermlia" href="HomePage.aspx" style=" border-right: 3.4px solid #000d33;">טאקוונדו</a>
+<div class="disappeared5" >
+<ol style="left:18; line-height:2.2; position:relative;">
+    <a href="tak1.aspx"><li>רקע</li></a>
+     <a href="tak2.aspx"><li>מייסד</li>
+     <a href="tak3.aspx"><li>היסטוריה</li></a>
+     <a href="tak4.aspx"> <li>קרבות</li></a>
+     <a href="tak5.aspx"><li>ארגונים</li></a>
+     <a href="tak6.aspx"><li>שיפוט</li></a> 
+    <a href="tak7.aspx"> <li>מגנים</li></a>
+    <a href="tak10.aspx"> <li>דירוג</li></a>
+     <a href="tak8.aspx"> <li>לבוש</li></a>
+     <a href="tak9.aspx"> <li>בישראל</li></a>
+</ol>
+</div></li>
+ </div>
+
+
+
+    <div class="appeared6">
+<li><a class="headermlia" href="HomePage.aspx" style=" border-right: 3.4px solid #000d33;">ג'יו ג'יטסו</a>
+<div class="disappeared6" >
+<ol style="left:18; line-height:2.2; position:relative;">
+    <a href="jojo1.aspx"><li>רקע</li></a>
+     <a href="jojo2.aspx"><li>גראפלינג</li>
+     <a href="jojo3.aspx"><li>הכנעות</li></a>
+     <a href="jojo4.aspx"> <li>חניקות</li></a>
+     <a href="jojo5.aspx"><li>דרגות</li></a>
+     <a href="jojo6.aspx"><li>תחרויות</li></a> 
+    <a href="jojo7.aspx"> <li>בישראל</li></a>
+    <a href="jojo8.aspx"> <li>עמדות</li></a>
+     <a href="jojo9.aspx"> <li>התפשטות</li></a>
+     <a href="jojo10.aspx"> <li>עקרונות</li></a>
+</ol>
+</div></li>
+ </div>
+
+
+
+ 
+    <div class="appeared7">
+<li><a class="headermlia" href="HomePage.aspx" style="padding:5 35px; border-right: 3.4px solid #000d33;">סייף</a>
+<div class="disappeared7" >
+<ol style="left:20; line-height:2; position:relative;">
+    <a href="saif1.aspx"><li>רקע</li></a>
+     <a href="saif2.aspx"><li>היסטוריה</li>
+     <a href="saif3.aspx"><li>מאפיינים</li></a>
+     <a href="saif4.aspx"> <li>ענף אולימפי</li></a>
+     <a href="saif5.aspx"><li>תנוחות</li></a>
+     <a href="saif6.aspx"><li>סיוף נכים</li></a> 
+    <a href="saif7.aspx"> <li>רומח</li></a>
+    <a href="saif8.aspx"> <li>לבוש</li></a>
+     <a href="saif9.aspx"> <li>תחרויות</li></a>
+     <a href="saif10.aspx"> <li>חוקים</li></a>
+     <a href="saif11.aspx"><li>יובל פרייליך</li></a> 
+    <a href="saif12.aspx"> <li>אליפות</li></a>
+     <a href="saif13.aspx"> <li>בישראל</li></a>
+     <a href="saif14.aspx"> <li>ציוד</li></a>
+
+</ol>
+</div></li>
+ </div>
+
+
+
+<div class="appeared8">
+<li><a class="headermlia" href="HomePage.aspx" style=" border-right: 3.4px solid #000d33;">נשק קר</a>
+<div class="disappeared8" >
+<ol style="left:20; line-height:2; position:relative;">
+    <a href="weapon1.aspx"><li>רקע</li></a>
+     <a href="weapon2.aspx"><li>קאטנה</li>
+     <a href="weapon3.aspx"><li>נונצ'אקו</li></a>
+
+
+</ol>
+</div></li>
+ </div>
+
+ <div class="appeared9">
+<li><a class="headermlia" href="HomePage.aspx" style=" border-right: 3.4px solid #000d33;">סמוראים</a>
+<div class="disappeared9" >
+<ol style="left:20; line-height:2; position:relative;">
+    <a href="smor1.aspx"><li>רקע</li></a>
+     <a href="smor2.aspx"><li>בושידו</li>
+     <a href="smor3.aspx"><li>חראקירי</li></a>
+     <a href="smor4.aspx"> <li>היסטוריה</li></a>
+     <a href="smor5.aspx"><li>תרבות</li></a>
+     <a href="smor6.aspx"><li>ארקבוז</li></a> 
+    <a href="smor7.aspx"> <li>נשק</li></a>
+    <a href="smor8.aspx"> <li>שיריון</li></a>
+     <a href="smor9.aspx"> <li>פופולריות</li></a>
+  
+
+</ol>
+</div></li>
+ </div>
+
+  <div class="appeared10">
+<li><a class="headermlia" href="HomePage.aspx" style="padding:5 35px; border-right: 3.4px solid #000d33;">ג'ודו</a>
+<div class="disappeared10" >
+<ol style="left:20; line-height:2; position:relative;">
+    <a href="jodo1.aspx"><li>רקע</li></a>
+     <a href="jodo2.aspx"><li>תחרות</li>
+     <a href="jodo3.aspx"><li>אליפות</li></a>
+     <a href="jodo4.aspx"> <li>הכנעות</li></a>
+     <a href="jodo5.aspx""><li>מושגים</li></a>
+     <a href="jodo6.aspx"><li>חוקים</li></a> 
+    <a href="jodo7.aspx"> <li>משקל</li></a>
+    <a href="jodo8.aspx"> <li>דרגות</li></a>
+     <a href="jodo9.aspx"> <li>בישראל</li></a>
+     <a href="jodo10.aspx"> <li>שגיא מוקי</li></a>
+     <a href="jodo11.aspx"> <li>אורי ששון</li></a>
+  
+</ol>
+</div></li>
+ </div>
+
+  <div class="appeared11">
+<li><a class="headermlia" href="HomePage.aspx" style=" border-left:none; margin-top:-16; border-right: 3.4px solid #000d33;">איגרוף</a>
+<div class="disappeared11" >
+<ol style="left:20; line-height:2; position:relative;">
+    <a href="igrof1.aspx"><li>רקע</li></a>
+     <a href="igrof2.aspx"><li>טכניקות</li>
+     <a href="igrof3.aspx"><li>משקל</li></a>
+     <a href="igrof4.aspx"> <li>חוקים</li></a>
+     <a href="igrof5.aspx"><li>ניקוד</li></a> 
+
+  
+</ol>
+</div></li>
+ </div>
+
+
+</ul>
+</div>
+</div>
+
+
+
+
+
+<asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server"></asp:ContentPlaceHolder>
+ 
+<div class="footer">
+  <img class="shite"  src="images/shite.png" width="15%" height="80%"/>
+
+<div class="conect">
+<b><u>צרו איתנו קשר!</u></b><br /><span style="font-family:Arial; line-height:2.6;">+972 058 579-4093</span><br />
+<table width="10%" style=" position:relative; bottom:10px;">
+    <tr>
+       <td  > <a style=" margin-right:10px; margin-left:10px;" target="_blank" href="https://www.instagram.com/"><div class="icon"><img width="30" height="30" src="images/instegram.png" style="cursor:pointer; "/></div></a></td>
+     <td >  <a style=" margin-right:10px; margin-left:10px;" target="_blank" href="https://www.facebook.com/"> <div class="icon"><img width="30" height="30" src="images/facebook.png" style="cursor:pointer;   "/></div></a></td>
+      <td>  <a style=" margin-right:10px; margin-left:10px;" target="_blank" href="https://twitter.com/?lang=he"><div class="icon"><img width="30" height="30" src="images/twiiter.png" style="  cursor:pointer;  "/></div></a></td>
+    </tr>
+</table>
+</div>
+<a href="#up">
+<img style=" position:relative; right:325; top:23px;" src="images/upIcon.jpg" width="20" height="20"/><br />
+<a href="#up" style=" position:relative; right:350; font-family:Guttman Kav; font-size:20px; color:white; text-decoration:none;">חזור למעלה</a>
+<img style=" position:relative; right:350; top:3px;"  src="images/upIcon.jpg" width="20" height="20"/>
+</a><br /><br /><br />
+<br /><br /><br />
+<div style=" position:relative; right:200px; top:50;">
+<b><font size="4" >כל הזכויות שמורות לאייל נפתלי בניית אתרים בע"מ</font></b>
+<img src="images/copy.png" width="20" height="20" style="top:4; right:5; position:relative;"/>
+</div>
+  
+
+
+
+</div>
+
+
+ 
+ 
+
+</div>
+</div>
+</body>
+</html>
